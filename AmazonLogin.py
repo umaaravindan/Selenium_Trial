@@ -26,7 +26,7 @@ searchText.send_keys(Keys.ENTER)
 for i,link in enumerate(df['NextLink']): 
  #USBMenu=driver.find_element(By.PARTIAL_LINK_TEXT,"See more")
  #USBMenu.click()
-  USBOptions = WebDriverWait(driver,15).until(EC.visibility_of_element_located((By.PARTIAL_LINK_TEXT,link)))
+  USBOptions = WebDriverWait(driver,25).until(EC.visibility_of_element_located((By.PARTIAL_LINK_TEXT,link)))
   driver.find_element(By.PARTIAL_LINK_TEXT,link)
   USBOptions.click()
   
