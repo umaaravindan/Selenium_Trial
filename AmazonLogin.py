@@ -30,7 +30,7 @@ for i,link in enumerate(df['NextLink']):
   driver.find_element(By.PARTIAL_LINK_TEXT,link)
   USBOptions.click()
   
-  screenshot_filename = os.path.join(current_directory, f"Screenshot_{i}.png")
+  screenshot_filename = os.path.join(screenshots_directory, f"Screenshot_{i}.png")
   driver.save_screenshot(screenshot_filename) 
   
 driver.quit()
