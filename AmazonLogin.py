@@ -29,7 +29,7 @@ for i,link in enumerate(df['NextLink']):
   USBOptions = WebDriverWait(driver,25).until(EC.visibility_of_element_located((By.PARTIAL_LINK_TEXT,link)))
   driver.find_element(By.PARTIAL_LINK_TEXT,link)
   USBOptions.click()
-  
+  WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Clear")))
   screenshot_filename = os.path.join(screenshots_directory, f"Screenshot_{i}.png")
   driver.save_screenshot(screenshot_filename) 
   
