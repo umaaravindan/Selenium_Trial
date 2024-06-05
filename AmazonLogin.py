@@ -32,5 +32,4 @@ for i,link in enumerate(df['NextLink']):
   WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Clear")))
   screenshot_filename = os.path.join(screenshots_directory, f"Screenshot_{i}.png")
   driver.save_screenshot(screenshot_filename) 
-  
 driver.quit()
