@@ -1,0 +1,34 @@
+pipeline:
+  agent:
+    any
+
+  environment:
+    DOCKER_IMAGE: 'chatlearning123/umadocker:latest'
+    DOCKER_USERNAME: credentials('chatlearning123')
+    DOCKER_PASSWORD: credentials('1234567890')
+
+  stages:
+    - stage: Login
+      steps:
+        - script:
+            docker.withRegistry('', DOCKER_USERNAME, DOCKER_PASSWORD) {
+              echo 'Logged in to Docker Hub'
+            }
+    
+    - stage: Build
+      steps:
+        - script:
+            docker.build(DOCKER_IMAGE, '-f Dockerfile .')
+    
+    - stage: Push
+      steps:
+        - script:
+            docker.withRegistry('https://registry.hub.docker.com', DOCKER_USERNAME, DOCKER_PASSWORD) {
+              docker.image(DOCKER_IMAGE).push()
+            }
+
+  post:
+    success:
+      - echo 'Docker image built and pushed successfully'
+    failure:
+      - echo 'Failed to build or push Docker image'
