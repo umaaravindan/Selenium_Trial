@@ -1,0 +1,1 @@
+print("Welcoem to Docker and python")
