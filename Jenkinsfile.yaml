@@ -4,8 +4,7 @@ pipeline:
 
   environment:
     DOCKER_IMAGE: 'chatlearning123/umadocker:latest'
-    DOCKER_USERNAME: credentials('chatlearning123')
-    DOCKER_PASSWORD: credentials('1234567890')
+    DOCKER_CREDENTIALS_ID: 'GIT_CREDENTIALS'
 
   stages:
     - stage: Login
